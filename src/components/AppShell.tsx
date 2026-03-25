@@ -32,17 +32,17 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             </Link>
             <nav className="flex items-center gap-3 text-sm">
               <Link href="/forms" className="text-zinc-700 hover:text-zinc-900">
-                Форми
+                Forms
               </Link>
               <Link href="/dashboard" className="text-zinc-700 hover:text-zinc-900">
-                Дашборд
+                Dashboard
               </Link>
             </nav>
           </div>
 
           <div className="flex items-center gap-3">
             <span className="hidden text-sm text-zinc-600 sm:inline">
-              {role ? `Роль: ${role}` : "Гість"}
+              {role ? `Role: ${role}` : "Guest"}
             </span>
             {role ? (
               <button
@@ -50,14 +50,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 onClick={onLogout}
                 className="rounded-lg border bg-white px-3 py-1.5 text-sm text-zinc-800 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
               >
-                Вийти
+                Sign out
               </button>
             ) : (
               <Link
                 href="/login"
                 className="rounded-lg bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
               >
-                Увійти
+                Sign in
               </Link>
             )}
           </div>

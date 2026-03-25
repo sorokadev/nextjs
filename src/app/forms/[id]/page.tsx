@@ -19,12 +19,12 @@ export default async function EditFormPage(props: { params: Promise<{ id: string
     return (
       <AppShell>
         <div className="rounded-2xl border bg-white p-6">
-          <h1 className="text-xl font-semibold text-zinc-900">Редагування форми</h1>
-          <p className="mt-2 text-sm text-rose-600">Не вдалося завантажити форму.</p>
-          <p className="mt-1 text-sm text-zinc-600">Спробуйте оновити сторінку.</p>
+          <h1 className="text-xl font-semibold text-zinc-900">Edit form</h1>
+          <p className="mt-2 text-sm text-rose-600">Failed to load the form.</p>
+          <p className="mt-1 text-sm text-zinc-600">Try refreshing the page.</p>
           <div className="mt-4">
             <Link href="/forms" className="text-sm font-medium text-zinc-700 hover:text-zinc-900">
-              ← До списку
+              ← Back to list
             </Link>
           </div>
         </div>
@@ -40,13 +40,13 @@ export default async function EditFormPage(props: { params: Promise<{ id: string
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">Редагування</h1>
+            <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">Edit</h1>
             <p className="mt-1 text-sm text-zinc-600">
               ID: <span className="font-mono text-zinc-900">{data.item._id}</span>
             </p>
           </div>
           <Link href="/forms" className="text-sm font-medium text-zinc-700 hover:text-zinc-900">
-            ← До списку
+            ← Back to list
           </Link>
         </div>
 

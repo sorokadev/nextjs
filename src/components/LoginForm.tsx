@@ -10,7 +10,7 @@ import { useAuthStore } from "@/store/auth-store";
 import { useToastStore } from "@/store/toast-store";
 
 const LoginClientSchema = z.object({
-  email: z.string().email("Вкажіть коректний email"),
+  email: z.string().email("Please enter a valid email"),
   role: z.enum(USER_ROLES),
 });
 
@@ -52,14 +52,14 @@ export function LoginForm() {
       if (!res.ok) {
         pushToast({
           kind: "error",
-          title: "Не вдалося увійти",
-          message: "Перевірте дані та повторіть спробу.",
+          title: "Sign-in failed",
+          message: "Please check your details and try again.",
         });
         return;
       }
 
       setRole(values.role);
-      pushToast({ kind: "success", title: "Успішний вхід" });
+      pushToast({ kind: "success", title: "Signed in" });
       router.replace(next && next.startsWith("/") ? next : "/forms");
       router.refresh();
     } finally {
@@ -93,7 +93,7 @@ export function LoginForm() {
 
       <div>
         <label htmlFor="role" className="block text-sm font-medium text-zinc-900">
-          Роль
+          Role
         </label>
         <select
           id="role"
@@ -118,7 +118,7 @@ export function LoginForm() {
         disabled={isSubmitting}
         className="inline-flex w-full items-center justify-center rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
       >
-        {isSubmitting ? "Входимо..." : "Увійти"}
+        {isSubmitting ? "Signing in..." : "Sign in"}
       </button>
     </form>
   );

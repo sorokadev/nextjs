@@ -9,13 +9,18 @@ import { useToastStore } from "@/store/toast-store";
 import { FormStatusSchema } from "@/lib/forms/schema";
 
 const NewFormSchema = z.object({
-  title: z.string().trim().min(3, "Назва має містити щонайменше 3 символи"),
-  description: z.string().trim().max(2000, "Опис занадто довгий").optional().or(z.literal("")),
+  title: z.string().trim().min(3, "Title must be at least 3 characters long"),
+  description: z
+    .string()
+    .trim()
+    .max(2000, "Description is too long")
+    .optional()
+    .or(z.literal("")),
   fieldsCount: z
-    .number({ error: "К-сть полів має бути числом" })
-    .int("К-сть полів має бути цілим числом")
-    .min(0, "Мінімум 0")
-    .max(50, "Максимум 50"),
+    .number({ error: "Field count must be a number" })
+    .int("Field count must be an integer")
+    .min(0, "Minimum is 0")
+    .max(50, "Maximum is 50"),
   status: FormStatusSchema,
 });
 
@@ -58,16 +63,16 @@ export function NewFormForm() {
       if (!res.ok) {
         pushToast({
           kind: "error",
-          title: "Не вдалося створити форму",
+          title: "Failed to create form",
           message:
             data && "message" in data && data.message
               ? data.message
-              : "Перевірте поля та повторіть спробу.",
+              : "Please check the fields and try again.",
         });
         return;
       }
 
-      pushToast({ kind: "success", title: "Форму створено" });
+      pushToast({ kind: "success", title: "Form created" });
       router.replace("/forms");
       router.refresh();
     } finally {
@@ -79,11 +84,11 @@ export function NewFormForm() {
     <form onSubmit={onSubmit} className="space-y-4">
       <div>
         <label htmlFor="title" className="block text-sm font-medium text-zinc-900">
-          Назва
+          Title
         </label>
         <input
           id="title"
-          placeholder="Напр. Заявка на подію"
+          placeholder="e.g. Event registration"
           className={[
             "mt-1 w-full rounded-lg border px-3 py-2 text-sm outline-none",
             "placeholder:text-zinc-500 placeholder:opacity-100",
@@ -97,12 +102,12 @@ export function NewFormForm() {
 
       <div>
         <label htmlFor="description" className="block text-sm font-medium text-zinc-900">
-          Опис (необов’язково)
+          Description (optional)
         </label>
         <textarea
           id="description"
           rows={4}
-          placeholder="Коротко: навіщо форма і що збираємо"
+          placeholder="Briefly: what the form is for and what you collect"
           className={[
             "mt-1 w-full resize-y rounded-lg border px-3 py-2 text-sm outline-none",
             "placeholder:text-zinc-500 placeholder:opacity-100",
@@ -119,7 +124,7 @@ export function NewFormForm() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="fieldsCount" className="block text-sm font-medium text-zinc-900">
-            К-сть полів
+            Field count
           </label>
           <input
             id="fieldsCount"
@@ -141,7 +146,7 @@ export function NewFormForm() {
 
         <div>
           <label htmlFor="status" className="block text-sm font-medium text-zinc-900">
-            Статус
+            Status
           </label>
           <select
             id="status"
@@ -166,7 +171,7 @@ export function NewFormForm() {
         disabled={isSubmitting}
         className="inline-flex items-center justify-center rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
       >
-        {isSubmitting ? "Створюємо..." : "Створити"}
+        {isSubmitting ? "Creating..." : "Create"}
       </button>
     </form>
   );

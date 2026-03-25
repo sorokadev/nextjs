@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: "Forms Dashboard",
     template: "%s · Forms Dashboard",
   },
-  description: "Міні-додаток для керування формами: ролі, SSR/SSG, SEO та REST API.",
+  description: "A mini app for managing forms: roles, SSR/SSG, SEO, and a REST API.",
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="uk"
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

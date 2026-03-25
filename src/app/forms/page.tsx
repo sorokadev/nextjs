@@ -16,7 +16,7 @@ function badge(status: FormStatus) {
 
 function fmt(iso: string) {
   const d = new Date(iso);
-  return new Intl.DateTimeFormat("uk-UA", {
+  return new Intl.DateTimeFormat("en-US", {
     year: "numeric",
     month: "short",
     day: "2-digit",
@@ -40,10 +40,10 @@ export default async function FormsPage(props: {
     return (
       <AppShell>
         <div className="rounded-2xl border bg-white p-6">
-          <h1 className="text-xl font-semibold text-zinc-900">Форми</h1>
-          <p className="mt-2 text-sm text-rose-600">Не вдалося завантажити список форм.</p>
+          <h1 className="text-xl font-semibold text-zinc-900">Forms</h1>
+          <p className="mt-2 text-sm text-rose-600">Failed to load the forms list.</p>
           <p className="mt-1 text-sm text-zinc-600">
-            Спробуйте оновити сторінку або перевірте підключення до бази.
+            Try refreshing the page or check your database connection.
           </p>
         </div>
       </AppShell>
@@ -58,9 +58,9 @@ export default async function FormsPage(props: {
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">Форми</h1>
+            <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">Forms</h1>
             <p className="mt-1 text-sm text-zinc-600">
-              Сортування: за оновленням (desc). Фільтр — за статусом.
+              Sort: by last updated (desc). Filter: by status.
             </p>
           </div>
           {role === "admin" ? (
@@ -68,7 +68,7 @@ export default async function FormsPage(props: {
               href="/forms/new"
               className="inline-flex items-center justify-center rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
             >
-              Нова форма
+              New form
             </Link>
           ) : null}
         </div>
@@ -81,7 +81,7 @@ export default async function FormsPage(props: {
               !status ? "border-zinc-900 bg-zinc-900 text-white" : "border-zinc-200 bg-white",
             ].join(" ")}
           >
-            Усі
+            All
           </Link>
           {(["draft", "active", "archived"] as const).map((s) => (
             <Link
@@ -99,15 +99,15 @@ export default async function FormsPage(props: {
 
         <div className="overflow-hidden rounded-2xl border bg-white">
           <div className="grid grid-cols-12 gap-4 border-b bg-zinc-50 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-zinc-600">
-            <div className="col-span-6">Назва</div>
-            <div className="col-span-2">Статус</div>
-            <div className="col-span-2">Поля</div>
-            <div className="col-span-2">Оновлено</div>
+            <div className="col-span-6">Title</div>
+            <div className="col-span-2">Status</div>
+            <div className="col-span-2">Fields</div>
+            <div className="col-span-2">Updated</div>
           </div>
 
           {items.length === 0 ? (
             <div className="px-4 py-10 text-center">
-              <p className="text-sm text-zinc-600">Нічого не знайдено для цього фільтру.</p>
+              <p className="text-sm text-zinc-600">No results for this filter.</p>
             </div>
           ) : (
             <ul className="divide-y">
@@ -124,14 +124,14 @@ export default async function FormsPage(props: {
                             href={`/forms/${f._id}`}
                             className="text-xs font-medium text-zinc-600 hover:text-zinc-900"
                           >
-                            Редагувати
+                            Edit
                           </Link>
                         ) : null}
                       </div>
                       {f.description ? (
                         <p className="mt-1 line-clamp-1 text-sm text-zinc-600">{f.description}</p>
                       ) : (
-                        <p className="mt-1 text-sm text-zinc-400">Без опису</p>
+                        <p className="mt-1 text-sm text-zinc-400">No description</p>
                       )}
                     </div>
                     <div className="col-span-2">

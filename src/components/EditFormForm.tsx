@@ -52,14 +52,16 @@ export function EditFormForm({ item }: { item: FormRecord }) {
       if (!res.ok) {
         pushToast({
           kind: "error",
-          title: "Не вдалося зберегти",
+          title: "Failed to save",
           message:
-            data && "message" in data && data.message ? data.message : "Перевірте поля та повторіть.",
+            data && "message" in data && data.message
+              ? data.message
+              : "Please check the fields and try again.",
         });
         return;
       }
 
-      pushToast({ kind: "success", title: "Зміни збережено" });
+      pushToast({ kind: "success", title: "Changes saved" });
       router.refresh();
     } finally {
       setIsSaving(false);
@@ -67,7 +69,7 @@ export function EditFormForm({ item }: { item: FormRecord }) {
   });
 
   const onDelete = async () => {
-    if (!confirm("Видалити форму? Цю дію не можна скасувати.")) return;
+    if (!confirm("Delete this form? This action cannot be undone.")) return;
     setIsDeleting(true);
     try {
       const res = await fetch(`/api/forms/${item._id}`, { method: "DELETE" });
@@ -75,14 +77,14 @@ export function EditFormForm({ item }: { item: FormRecord }) {
       if (!res.ok) {
         pushToast({
           kind: "error",
-          title: "Не вдалося видалити",
+          title: "Failed to delete",
           message:
-            data && "message" in data && data.message ? data.message : "Спробуйте ще раз.",
+            data && "message" in data && data.message ? data.message : "Please try again.",
         });
         return;
       }
 
-      pushToast({ kind: "success", title: "Форму видалено" });
+      pushToast({ kind: "success", title: "Form deleted" });
       router.replace("/forms");
       router.refresh();
     } finally {
@@ -94,11 +96,11 @@ export function EditFormForm({ item }: { item: FormRecord }) {
     <form onSubmit={onSubmit} className="space-y-4">
       <div>
         <label htmlFor="title" className="block text-sm font-medium text-zinc-900">
-          Назва
+          Title
         </label>
         <input
           id="title"
-          placeholder="Напр. Заявка на подію"
+          placeholder="e.g. Event registration"
           className={[
             "mt-1 w-full rounded-lg border px-3 py-2 text-sm outline-none",
             "placeholder:text-zinc-500 placeholder:opacity-100",
@@ -112,12 +114,12 @@ export function EditFormForm({ item }: { item: FormRecord }) {
 
       <div>
         <label htmlFor="description" className="block text-sm font-medium text-zinc-900">
-          Опис (необов’язково)
+          Description (optional)
         </label>
         <textarea
           id="description"
           rows={4}
-          placeholder="Коротко: навіщо форма і що збираємо"
+          placeholder="Briefly: what the form is for and what you collect"
           className={[
             "mt-1 w-full resize-y rounded-lg border px-3 py-2 text-sm outline-none",
             "placeholder:text-zinc-500 placeholder:opacity-100",
@@ -134,7 +136,7 @@ export function EditFormForm({ item }: { item: FormRecord }) {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="fieldsCount" className="block text-sm font-medium text-zinc-900">
-            К-сть полів
+            Field count
           </label>
           <input
             id="fieldsCount"
@@ -156,7 +158,7 @@ export function EditFormForm({ item }: { item: FormRecord }) {
 
         <div>
           <label htmlFor="status" className="block text-sm font-medium text-zinc-900">
-            Статус
+            Status
           </label>
           <select
             id="status"
@@ -182,7 +184,7 @@ export function EditFormForm({ item }: { item: FormRecord }) {
           disabled={isSaving || isDeleting}
           className="inline-flex items-center justify-center rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
         >
-          {isSaving ? "Зберігаємо..." : "Зберегти"}
+          {isSaving ? "Saving..." : "Save"}
         </button>
 
         <button
@@ -191,7 +193,7 @@ export function EditFormForm({ item }: { item: FormRecord }) {
           disabled={isSaving || isDeleting}
           className="inline-flex items-center justify-center rounded-lg border border-rose-200 bg-white px-4 py-2.5 text-sm font-medium text-rose-700 hover:bg-rose-50 disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
         >
-          {isDeleting ? "Видаляємо..." : "Видалити"}
+          {isDeleting ? "Deleting..." : "Delete"}
         </button>
       </div>
     </form>

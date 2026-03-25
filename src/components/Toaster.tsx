@@ -37,7 +37,7 @@ export function Toaster() {
               type="button"
               onClick={() => remove(t.id)}
               className="rounded-md px-2 py-1 text-sm text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
-              aria-label="Закрити сповіщення"
+              aria-label="Dismiss notification"
             >
               ✕
             </button>

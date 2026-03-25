@@ -6,9 +6,9 @@ export default async function DashboardPage() {
 
   return (
     <AppShell>
-      <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">Дашборд</h1>
+      <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">Dashboard</h1>
       <p className="mt-2 text-sm text-zinc-600">
-        Ви залогінені. Поточна роль: <span className="font-medium text-zinc-900">{role}</span>.
+        You are signed in. Current role: <span className="font-medium text-zinc-900">{role}</span>.
       </p>
     </AppShell>
   );

@@ -41,8 +41,8 @@ export async function ensureSeedForms() {
   await col.insertMany([
     {
       _id: new ObjectId(),
-      title: "Onboarding (коротка анкета)",
-      description: "Збір базової інформації перед стартом співпраці.",
+      title: "Onboarding (short survey)",
+      description: "Collect basic information before starting the collaboration.",
       fieldsCount: 8,
       status: "active",
       createdAt: now,
@@ -50,8 +50,8 @@ export async function ensureSeedForms() {
     },
     {
       _id: new ObjectId(),
-      title: "Заявка на подію",
-      description: "Реєстрація учасників та збір контактів.",
+      title: "Event registration",
+      description: "Register attendees and collect contact information.",
       fieldsCount: 12,
       status: "draft",
       createdAt: now,
@@ -59,8 +59,8 @@ export async function ensureSeedForms() {
     },
     {
       _id: new ObjectId(),
-      title: "Ретроспектива команди",
-      description: "Питання для підсумків спринту (анонімно за бажанням).",
+      title: "Team retrospective",
+      description: "Sprint wrap-up questions (anonymous if you want).",
       fieldsCount: 6,
       status: "archived",
       createdAt: now,

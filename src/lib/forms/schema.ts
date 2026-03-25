@@ -4,18 +4,18 @@ export const FormStatusSchema = z.enum(["draft", "active", "archived"]);
 export type FormStatus = z.infer<typeof FormStatusSchema>;
 
 export const FormInputSchema = z.object({
-  title: z.string().trim().min(3, "Назва має містити щонайменше 3 символи"),
+  title: z.string().trim().min(3, "Title must be at least 3 characters long"),
   description: z
     .string()
     .trim()
-    .max(2000, "Опис занадто довгий")
+    .max(2000, "Description is too long")
     .optional()
     .or(z.literal("")),
   fieldsCount: z
-    .number({ error: "К-сть полів має бути числом" })
-    .int("К-сть полів має бути цілим числом")
-    .min(0, "Мінімум 0")
-    .max(50, "Максимум 50"),
+    .number({ error: "Field count must be a number" })
+    .int("Field count must be an integer")
+    .min(0, "Minimum is 0")
+    .max(50, "Maximum is 50"),
   status: FormStatusSchema,
 });
 

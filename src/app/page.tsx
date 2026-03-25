@@ -9,21 +9,20 @@ export default function Home() {
               Forms Dashboard
             </h1>
             <p className="mt-4 text-lg leading-8 text-zinc-600">
-              Швидко створюйте та керуйте формами. Ролі, валідація, SSR/SSG, SEO — все в одному
-              місці.
+              Create and manage forms fast. Roles, validation, SSR/SSG, SEO — all in one place.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="/login"
                 className="inline-flex items-center justify-center rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
               >
-                Увійти
+                Sign in
               </a>
               <a
                 href="/forms"
                 className="inline-flex items-center justify-center rounded-lg border bg-white px-4 py-2.5 text-sm font-medium text-zinc-900 hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-zinc-900/20"
               >
-                Перейти до форм
+                Go to forms
               </a>
             </div>
           </div>
@@ -35,11 +34,11 @@ export default function Home() {
               <div className="h-3 w-3/4 rounded bg-zinc-100" />
               <div className="mt-6 grid grid-cols-3 gap-3">
                 <div className="rounded-2xl border bg-zinc-50 p-4">
-                  <div className="text-xs text-zinc-600">Ролі</div>
+                  <div className="text-xs text-zinc-600">Roles</div>
                   <div className="mt-1 text-sm font-semibold text-zinc-900">Admin / Individual</div>
                 </div>
                 <div className="rounded-2xl border bg-zinc-50 p-4">
-                  <div className="text-xs text-zinc-600">Статуси</div>
+                  <div className="text-xs text-zinc-600">Statuses</div>
                   <div className="mt-1 text-sm font-semibold text-zinc-900">
                     Draft / Active / Archived
                   </div>
@@ -50,7 +49,7 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-sm text-zinc-600">
-                Під капотом: Next.js App Router, Zod (client+server), Zustand, MongoDB Atlas.
+                Under the hood: Next.js App Router, Zod (client+server), Zustand, MongoDB Atlas.
               </p>
             </div>
           </div>
