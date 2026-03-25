@@ -1,5 +1,6 @@
 import { AppShell } from "@/components/AppShell";
 import { LoginForm } from "@/components/LoginForm";
+import { Suspense } from "react";
 
 export default function LoginPage() {
   return (
@@ -11,7 +12,11 @@ export default function LoginPage() {
         </p>
 
         <div className="mt-6 rounded-2xl border bg-white p-6 shadow-sm">
-          <LoginForm />
+          <Suspense
+            fallback={<div className="text-sm text-zinc-600">Завантаження…</div>}
+          >
+            <LoginForm />
+          </Suspense>
         </div>
       </div>
     </AppShell>
